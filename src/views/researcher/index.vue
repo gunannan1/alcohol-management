@@ -43,14 +43,14 @@
       <span>Researcher List</span>
       <el-button
         class="btn-add"
-        @click="handleAddProduct()"
+        @click="handleAddResearcher()"
         size="mini">
         Add
       </el-button>
     </el-card>
 
     <div class="table-container">
-      <el-table ref="productTable"
+      <el-table ref="researcherTable"
                 :data="list"
                 style="width: 100%"
                 v-loading="listLoading"
@@ -77,7 +77,7 @@
           <template slot-scope="scope">
               <el-button
                 size="mini"
-                @click="handleUpdateProduct(scope.$index, scope.row)">Edit
+                @click="handleUpdateResearcher(scope.$index, scope.row)">Edit
               </el-button>
               <el-button
                 size="mini"
@@ -107,11 +107,8 @@
 <script>
   import {
     fetchList,
-    deleteResearcher,
-    updateNewStatus,
-    updateRecommendStatus,
-    updatePublishStatus
-  } from '@/api/product'
+    deleteResearcher
+  } from '@/api/researcher'
 
   const defaultListQuery = {
     username: null,
@@ -123,38 +120,18 @@
     researcherId: null
   };
   export default {
-    name: "productList",
+    name: "researcherList",
     data() {
       return {
-        editSkuInfo:{
-          dialogVisible:false,
-          productId:null,
-          productSn:'',
-          productAttributeCategoryId:null,
-          stockList:[],
-          productAttr:[],
-          keyword:null
-        },
         operateType: null,
         listQuery: Object.assign({}, defaultListQuery),
         list: null,
         total: null,
         listLoading: true,
-        selectProductCateValue: null
       }
     },
     created() {
       this.getList();
-    },
-    watch: {
-      selectProductCateValue: function (newValue) {
-        if (newValue != null && newValue.length == 2) {
-          this.listQuery.productCategoryId = newValue[1];
-        } else {
-          this.listQuery.productCategoryId = null;
-        }
-
-      }
     },
     methods: {
       getList() {
@@ -169,8 +146,8 @@
         this.listQuery.pageNum = 1;
         this.getList();
       },
-      handleAddProduct() {
-        this.$router.push({path:'/pms/addProduct'});
+      handleAddResearcher() {
+        this.$router.push({path:'/addResearcher'});
       },
       handleSizeChange(val) {
         this.listQuery.pageNum = 1;
@@ -182,7 +159,6 @@
         this.getList();
       },
       handleResetSearch() {
-        this.selectProductCateValue = [];
         this.listQuery = Object.assign({}, defaultListQuery);
       },
       handleDelete(index, row){
@@ -194,53 +170,8 @@
           this.deleteResearcher(row.id);
         });
       },
-      handleUpdateProduct(index,row){
-        this.$router.push({path:'/pms/updateProduct',query:{id:row.id}});
-      },
-      handleShowProduct(index,row){
-        console.log("handleShowProduct",row);
-      },
-      handleShowVerifyDetail(index,row){
-        console.log("handleShowVerifyDetail",row);
-      },
-      handleShowLog(index,row){
-        console.log("handleShowLog",row);
-      },
-      updatePublishStatus(publishStatus, ids) {
-        let params = new URLSearchParams();
-        params.append('ids', ids);
-        params.append('publishStatus', publishStatus);
-        updatePublishStatus(params).then(response => {
-          this.$message({
-            message: '修改成功',
-            type: 'success',
-            duration: 1000
-          });
-        });
-      },
-      updateNewStatus(newStatus, ids) {
-        let params = new URLSearchParams();
-        params.append('ids', ids);
-        params.append('newStatus', newStatus);
-        updateNewStatus(params).then(response => {
-          this.$message({
-            message: '修改成功',
-            type: 'success',
-            duration: 1000
-          });
-        });
-      },
-      updateRecommendStatus(recommendStatus, ids) {
-        let params = new URLSearchParams();
-        params.append('ids', ids);
-        params.append('recommendStatus', recommendStatus);
-        updateRecommendStatus(params).then(response => {
-          this.$message({
-            message: '修改成功',
-            type: 'success',
-            duration: 1000
-          });
-        });
+      handleUpdateResearcher(index,row){
+        this.$router.push({path:'/updateResearcher',query:{id:row.id}});
       },
       deleteResearcher(id) {
         let params = new URLSearchParams();
@@ -250,6 +181,7 @@
             message: 'Delete success',
             type: 'success'
           });
+          this.handleResetSearch();
           this.handleSearchList();
         });
       }

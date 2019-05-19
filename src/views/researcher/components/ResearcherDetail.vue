@@ -1,17 +1,17 @@
 <template> 
   <el-card class="form-container" shadow="never">
     <div class="add-new">Add Or Edit Researcher</div>
-    <product-info-detail
-      v-model="productParam" :is-edit="isEdit"
+    <researcher-info-detail
+      v-model="researcherParam" :is-edit="isEdit"
       @finishCommit="finishCommit">
-    </product-info-detail>
+    </researcher-info-detail>
   </el-card>
 </template>
 <script>
-  import ProductInfoDetail from './ProductInfoDetail';
-  import {createResearcher,getProduct,updateProduct} from '@/api/product';
+  import ResearcherInfoDetail from './ResearcherInfoDetail';
+  import {createResearcher,getResearcher,updateResearcher} from '@/api/researcher';
 
-  const defaultProductParam = {
+  const defaultResearcherParam = {
     username:'',
     password:'',
     firstName:'',
@@ -21,8 +21,8 @@
     accessToken:''
   };
   export default {
-    name: 'ProductDetail',
-    components: {ProductInfoDetail},
+    name: 'ResearcherDetail',
+    components: {ResearcherInfoDetail},
     props: {
       isEdit: {
         type: Boolean,
@@ -32,25 +32,25 @@
     data() {
       return {
         active: 0,
-        productParam: Object.assign({}, defaultProductParam)
+        researcherParam: Object.assign({}, defaultResearcherParam)
       }
     },
     created(){
       if(this.isEdit){
-        getProduct(this.$route.query.id).then(response=>{
-          this.productParam=response.data;
+        getResearcher(this.$route.query.id).then(response=>{
+          this.researcherParam=response.data;
         });
       }
     },
     methods: {
       finishCommit(isEdit) {
-        this.$confirm('Do you want to add this new researcher', {
+        this.$confirm('Do you want to add or edit the researcher', {
           confirmButtonText: 'Yes',
           cancelButtonText: 'No',
           type: 'warning'
         }).then(() => {
           if(isEdit){
-            updateProduct(this.$route.query.id,this.productParam).then(response=>{
+            updateResearcher(this.$route.query.id,this.researcherParam).then(response=>{
               this.$message({
                 type: 'success',
                 message: 'Success',
@@ -59,7 +59,7 @@
               this.$router.back();
             });
           }else{
-            createResearcher(this.productParam).then(response=>{
+            createResearcher(this.researcherParam).then(response=>{
               this.$message({
                 type: 'success',
                 message: 'Success',

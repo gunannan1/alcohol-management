@@ -2,7 +2,7 @@
   <div style="margin-top: 50px">
     <el-form :model="value" :rules="rules" ref="researcherInfoForm" label-width="120px" style="width: 600px" size="small">
       <el-form-item label="Username：" prop="username">
-        <el-input v-model="value.username"></el-input>
+        <el-input v-model="value.username"  :readonly=this.isEdit></el-input>
       </el-form-item>
       <el-form-item label="Password：" prop="password">
         <el-input v-model="value.password"></el-input>
@@ -32,7 +32,7 @@
 <script>
 
   export default {
-    name: "ProductInfoDetail",
+    name: "ResearcherInfoDetail",
     props: {
       value: Object,
       isEdit: {

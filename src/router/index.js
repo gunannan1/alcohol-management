@@ -33,42 +33,28 @@ export const constantRouterMap = [
     }]
   },
   {
-    path: '/pms',
+    path: '',
     component: Layout,
-    redirect: '/pms/product',
-    name: 'pms',
+    redirect: '/researcher',
+    name: 'researcher',
     meta: {title: 'Researcher', icon: 'user'},
     children: [{
       path: 'product',
       name: 'product',
-      component: () => import('@/views/pms/product/index'),
+      component: () => import('@/views/researcher/index'),
       meta: {title: 'List', icon: 'product-list'}
     },
       {
-        path: 'addProduct',
-        name: 'addProduct',
-        component: () => import('@/views/pms/product/add'),
+        path: 'addResearcher',
+        name: 'addResearcher',
+        component: () => import('@/views/researcher/add'),
         meta: {title: 'Add', icon: 'product-add'}
       },
       {
-        path: 'updateProduct',
-        name: 'updateProduct',
-        component: () => import('@/views/pms/product/update'),
+        path: 'updateResearcher',
+        name: 'updateResearcher',
+        component: () => import('@/views/researcher/update'),
         meta: {title: 'Edit Researcher', icon: 'product-add'},
-        hidden: true
-      },
-      {
-        path: 'productRecycle',
-        name: 'productRecycle',
-        component: () => import('@/views/pms/product/index'),
-        meta: {title: '商品回收站', icon: 'product-recycle'},
-        hidden: true
-      },
-      {
-        path: 'productComment',
-        name: 'productComment',
-        component: () => import('@/views/pms/product/index'),
-        meta: {title: '商品评价', icon: 'product-comment'},
         hidden: true
       }
     ]
@@ -138,7 +124,7 @@ export const constantRouterMap = [
         path: 'brand',
         name: 'homeBrand',
         component: () => import('@/views/sms/brand/index'),
-        meta: {title: '品牌推荐', icon: 'product-brand'}
+        meta: {title: '品牌推荐', icon: 'researcher-brand'}
       },
       {
         path: 'subject',
