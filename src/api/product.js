@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 export function fetchList(params) {
   return request({
-    url:'/product/list',
+    url:'/researcher/list',
     method:'get',
     params:params
   })
@@ -15,9 +15,9 @@ export function fetchSimpleList(params) {
   })
 }
 
-export function updateDeleteStatus(params) {
+export function deleteResearcher(params) {
   return request({
-    url:'/product/update/deleteStatus',
+    url:'/researcher/delete',
     method:'post',
     params:params
   })
@@ -47,9 +47,9 @@ export function updatePublishStatus(params) {
   })
 }
 
-export function createProduct(data) {
+export function createResearcher(data) {
   return request({
-    url:'/product/create',
+    url:'/researcher/create',
     method:'post',
     data:data
   })
