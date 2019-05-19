@@ -39,8 +39,8 @@ export const constantRouterMap = [
     name: 'researcher',
     meta: {title: 'Researcher', icon: 'user'},
     children: [{
-      path: 'product',
-      name: 'product',
+      path: 'researcher',
+      name: 'researcher',
       component: () => import('@/views/researcher/index'),
       meta: {title: 'List', icon: 'product-list'}
     },
@@ -60,52 +60,40 @@ export const constantRouterMap = [
     ]
   },
   {
-    path: '/oms',
+    path: '',
     component: Layout,
-    redirect: '/oms/order',
-    name: 'oms',
+    redirect: '/user',
+    name: 'user',
     meta: {title: 'User', icon: 'user'},
     children: [
       {
-        path: 'order',
-        name: 'order',
-        component: () => import('@/views/oms/order/index'),
+        path: 'user',
+        name: 'user',
+        component: () => import('@/views/user/index'),
         meta: {title: 'List', icon: 'product-list'}
       },
       {
-        path: 'orderDetail',
-        name: 'orderDetail',
-        component: () => import('@/views/oms/order/orderDetail'),
-        meta: {title: '订单详情'},
-        hidden:true
+        path: 'addUser',
+        name: 'addUser',
+        component: () => import('@/views/user/add'),
+        meta: {title: 'Add', icon: 'product-add'}
       },
       {
-        path: 'orderSetting',
-        name: 'orderSetting',
-        component: () => import('@/views/oms/order/setting'),
-        meta: {title: '订单设置', icon: 'order-setting'}
+        path: 'updateUser',
+        name: 'updateUser',
+        component: () => import('@/views/user/update'),
+        meta: {title: 'Edit User', icon: 'product-add'},
+        hidden: true
       }
     ]
   },
   {
-    path:'/sms',
+    path:'',
     component: Layout,
-    redirect: '/sms/coupon',
-    name: 'sms',
+    redirect: '/message',
+    name: 'message',
     meta: {title: 'Message', icon: 'sms'},
     children: [
-      {
-        path: 'brand',
-        name: 'homeBrand',
-        component: () => import('@/views/sms/brand/index'),
-        meta: {title: '品牌推荐', icon: 'researcher-brand'}
-      },
-      {
-        path: 'subject',
-        name: 'homeSubject',
-        component: () => import('@/views/sms/subject/index'),
-        meta: {title: '专题推荐', icon: 'sms-subject'}
-      }
     ]
   },
   {path: '*', redirect: '/404', hidden: true}

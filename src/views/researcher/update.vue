@@ -1,11 +1,11 @@
 <template> 
-  <product-detail :is-edit='true'></product-detail>
+  <researcher-detail :is-edit='true'></researcher-detail>
 </template>
 <script>
-  import ProductDetail from './components/ResearcherDetail'
+  import ResearcherDetail from './components/ResearcherDetail'
   export default {
-    name: 'updateProduct',
-    components: { ProductDetail }
+    name: 'updateResearcher',
+    components: { ResearcherDetail }
   }
 </script>
 <style>

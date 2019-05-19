@@ -21,7 +21,6 @@ const user = {
   },
 
   actions: {
-    // 登录
     Login({ commit }, userInfo) {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
@@ -37,7 +36,6 @@ const user = {
       })
     },
 
-    // 登出
     LogOut({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
@@ -50,7 +48,6 @@ const user = {
       })
     },
 
-    // 前端 登出
     FedLogOut({ commit }) {
       return new Promise(resolve => {
         commit('SET_TOKEN', '')

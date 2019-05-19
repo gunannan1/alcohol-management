@@ -4,17 +4,17 @@
     <breadcrumb></breadcrumb>
     <el-dropdown class="avatar-container" trigger="click">
       <div class="avatar-wrapper">
-        <img class="user-avatar" :src="avatar">
+        Admin
         <i class="el-icon-caret-bottom"></i>
       </div>
       <el-dropdown-menu class="user-dropdown" slot="dropdown">
         <router-link class="inlineBlock" to="/">
           <el-dropdown-item>
-            首页
+            HomePage
           </el-dropdown-item>
         </router-link>
         <el-dropdown-item divided>
-          <span @click="logout" style="display:block;">退出</span>
+          <span @click="logout" style="display:block;">Logout</span>
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -25,11 +25,19 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import login_center_bg from '@/assets/images/login_center_bg.png'
+
+
 
 export default {
   components: {
     Breadcrumb,
     Hamburger
+  },
+  data() {
+    return {
+      login_center_bg
+    }
   },
   computed: {
     ...mapGetters([
