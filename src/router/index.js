@@ -87,20 +87,38 @@ export const constantRouterMap = [
       }
     ]
   },
+  // {
+  //   path:'',
+  //   component: Layout,
+  //   redirect: '/message',
+  //   name: 'message',
+  //   meta: {title: 'Message', icon: 'sms'},
+  //   children: [
+  //   ]
+  // },
   {
     path:'',
     component: Layout,
-    redirect: '/message',
-    name: 'message',
-    meta: {title: 'Message', icon: 'sms'},
+    redirect: '/setting',
+    name: 'setting',
+    meta: {title: 'Setting', icon: 'order-setting'},
     children: [
+      {
+        path: 'setting',
+        name: 'setting',
+        component: () => import('@/views/setting/index'),
+        meta: {title: 'Setting', icon: 'order-setting'}
+      }
     ]
   },
+
+
   {path: '*', redirect: '/404', hidden: true}
 ]
 
 export default new Router({
-  // mode: 'history', //后端支持可开
+  // mode: 'history',
+  base: '/index/',
   scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
