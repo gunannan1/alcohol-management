@@ -17,7 +17,7 @@
     firstName:'',
     lastName:'',
     email:'',
-    sex:'',
+    gender:'',
     age:'',
     researcherId:''
   };

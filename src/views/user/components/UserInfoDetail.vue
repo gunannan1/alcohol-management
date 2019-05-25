@@ -16,13 +16,13 @@
       <el-form-item label="Email: " prop="email">
         <el-input v-model="value.email"></el-input>
       </el-form-item>
-      <el-form-item label="Sex: " prop="sex">
+      <el-form-item label="Gender: " prop="gender">
         <el-select
-          v-model="value.sex"
-          @change="handleSexChange"
-          placeholder="Please choose your sex">
+          v-model="value.gender"
+          @change="handleGenderChange"
+          placeholder="Choose your gender">
           <el-option
-            v-for="item in sexOptions"
+            v-for="item in genderOptions"
             :key="item.value"
             :label="item.label"
             :value="item.value">
@@ -56,7 +56,7 @@
     data() {
       return {
         hasEditCreated:false,
-        sexOptions: [{label: "Male", value: 0},{label: "Female", value: 1}],
+        genderOptions: [{label: "Male", value: 0},{label: "Female", value: 1}],
         rules: {
           username: [
             {required: true, message: 'Please input username', trigger: 'blur'}
@@ -65,8 +65,8 @@
           firstName: [{required: true, message: 'Please input first name', trigger: 'blur'}],
           lastName: [{required: true, message: 'Please input last name', trigger: 'blur'}],
           email: [{required: true, message: 'Please input email address', trigger: 'blur'}],
-          sex: [{required: true, message: 'Please input your age', trigger: 'blur'}],
-          age: [{required: true, message: 'Please input email address', trigger: 'blur'}],
+          gender: [{required: true, message: 'Please choose your gender', trigger: 'blur'}],
+          age: [{required: true, message: 'Please input your age', trigger: 'blur'}],
           researcherId: [{required: true, message: 'Please input researcher ID', trigger: 'blur'}],
         }
       };
@@ -86,15 +86,15 @@
           }
         });
       },
-      handleSexChange(val) {
-        let sex = 0;
-        for (let i = 0; i < this.sexOptions.length; i++) {
-          if (this.sexOptions[i].value === val) {
-            sex = this.sexOptions[i].value;
+      handleGenderChange(val) {
+        let gender = 0;
+        for (let i = 0; i < this.genderOptions.length; i++) {
+          if (this.genderOptions[i].value === val) {
+            gender = this.genderOptions[i].value;
             break;
           }
         }
-        this.value.sex = sex;
+        this.value.gender = gender;
       }
     }
   }
