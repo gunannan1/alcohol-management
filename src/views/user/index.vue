@@ -70,9 +70,9 @@
         <el-table-column label="Age" width="120" align="center">
           <template slot-scope="scope">{{scope.row.age}}</template>
         </el-table-column>
-        <el-table-column label="Sex" width="120" align="center">
+        <el-table-column label="Gender" width="120" align="center">
           <template slot-scope="scope">
-            <div v-if="scope.row.sex===1">
+            <div v-if="scope.row.gender===1">
               Female
             </div>
             <div v-else>
@@ -130,7 +130,7 @@
     firstName: null,
     lastName: null,
     age:0,
-    sex:0,
+    gender:0,
     email: null,
     researcherId: null
   };

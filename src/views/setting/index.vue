@@ -1,37 +1,31 @@
 <template> 
   <el-card class="form-container" shadow="never">
     <div class="change-setting">Change App Setting</div>
-    <user-info-detail
-      v-model="userParam"
+    <setting-info-detail
+      v-model="settingParam"
       @finishCommit="finishCommit">
-    </user-info-detail>
+    </setting-info-detail>
   </el-card>
 </template>
 <script>
-  import UserInfoDetail from './UserInfoDetail';
+  import SettingInfoDetail from './SettingnfoDetail';
   import {getSetting,updateSetting} from '@/api/setting';
 
-  const defaultUserParam = {
+  const defaultSettingParam = {
     showResult:''
   };
   export default {
-    name: 'UserDetail',
-    components: {UserInfoDetail},
-    props: {
-      isEdit: {
-        type: Boolean,
-        default: false
-      }
-    },
+    name: 'SettingDetail',
+    components: {SettingInfoDetail},
     data() {
       return {
         active: 0,
-        userParam: Object.assign({}, defaultUserParam)
+        settingParam: Object.assign({}, defaultSettingParam)
       }
     },
     created(){
       getSetting().then(response=>{
-        this.userParam=response.data;
+        this.settingParam=response.data;
       });
     },
     methods: {
@@ -41,7 +35,7 @@
           cancelButtonText: 'No',
           type: 'warning'
         }).then(() => {
-          updateSetting(this.userParam).then(response=>{
+          updateSetting(this.settingParam).then(response=>{
             this.$message({
               type: 'success',
               message: 'Success',
