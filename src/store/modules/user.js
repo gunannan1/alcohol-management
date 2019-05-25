@@ -26,7 +26,7 @@ const user = {
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
           const data = response.data
-          const tokenStr = data.tokenHead+data.token
+          const tokenStr = data.tokenHead+" "+data.token
           setToken(tokenStr)
           commit('SET_TOKEN', tokenStr)
           resolve()
