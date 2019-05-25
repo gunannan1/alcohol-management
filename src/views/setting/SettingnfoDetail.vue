@@ -1,6 +1,6 @@
 <template>
   <div style="margin-top: 50px">
-    <el-form :model="value" :rules="rules" ref="userInfoForm" label-width="120px" style="width: 600px" size="small">
+    <el-form :model="value" :rules="rules" ref="settingInfoForm" label-width="120px" style="width: 600px" size="small">
       <el-form-item label="Result display: " prop="showResult">
         <el-select
           v-model="value.showResult"
@@ -15,7 +15,7 @@
         </el-select>
       </el-form-item>
       <el-form-item style="text-align: center">
-        <el-button type="primary" size="medium" @click="handleFinishCommit('userInfoForm')">Finish</el-button>
+        <el-button type="primary" size="medium" @click="handleFinishCommit('settingInfoForm')">Finish</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -24,13 +24,9 @@
 <script>
 
   export default {
-    name: "UserInfoDetail",
+    name: "SettingInfoDetail",
     props: {
-      value: Object,
-      isEdit: {
-        type: Boolean,
-        default: false
-      }
+      value: Object
     },
     data() {
       return {
