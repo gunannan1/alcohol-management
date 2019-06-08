@@ -13,7 +13,6 @@
 
   const defaultResearcherParam = {
     username:'',
-    password:'',
     firstName:'',
     lastName:'',
     email:'',

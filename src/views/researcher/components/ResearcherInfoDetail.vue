@@ -4,9 +4,6 @@
       <el-form-item label="Username：" prop="username">
         <el-input v-model="value.username"  :readonly=this.isEdit></el-input>
       </el-form-item>
-      <el-form-item label="Password：" prop="password">
-        <el-input v-model="value.password"></el-input>
-      </el-form-item>
       <el-form-item label="First Name：" prop="firstName">
         <el-input v-model="value.firstName"></el-input>
       </el-form-item>
@@ -47,7 +44,6 @@
           username: [
             {required: true, message: 'Please input username', trigger: 'blur'}
             ],
-          password:[{required: true, message: 'Please input password', trigger: 'blur'}],
           firstName: [{required: true, message: 'Please input first name', trigger: 'blur'}],
           lastName: [{required: true, message: 'Please input last name', trigger: 'blur'}],
           email: [{required: true, message: 'Please input email address', trigger: 'blur'}],
